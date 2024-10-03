@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
           </div>
         </header>
         <main>{children}</main>
-        <footer>Footer</footer>
+        <footer>All images are credited to Zotter Schokolade.</footer>
       </body>
     </html>
   );

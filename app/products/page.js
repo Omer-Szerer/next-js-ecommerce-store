@@ -1,8 +1,31 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { products } from '../../database/products';
+
 export const metadata = {
   title: 'Products',
   description: 'Super quality Austrian chocolate',
 };
 
 export default function ProductsPage() {
-  return <h1>Products Page</h1>;
+  return (
+    <div>
+      <h1>Our Products</h1>
+      {products.map((product) => {
+        return (
+          <div key={`products-${product.id}`}>
+            <Link href={`/products/${product.id}`}>
+              <div>{product.name}</div>
+              <Image
+                src={`/product-images/${product.name.replace(/ /g, '-')}.jpg`}
+                alt={product.name}
+                width={200}
+                height={200}
+              />
+            </Link>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
