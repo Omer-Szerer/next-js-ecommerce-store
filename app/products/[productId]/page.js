@@ -9,5 +9,10 @@ export default async function SingleProductPage(props) {
     return notFound();
   }
 
-  return <h1>{product.name}</h1>;
+  return (
+    <>
+      <h1>{product.name}</h1>
+      <div data-test-id="product-price">Price: {product.price}</div>
+    </>
+  );
 }

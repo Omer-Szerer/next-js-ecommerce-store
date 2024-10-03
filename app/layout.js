@@ -31,7 +31,9 @@ export default function RootLayout({ children }) {
           <div>
             <nav>
               <Link href="/">Home</Link>
-              <Link href="/products">Products</Link>
+              <Link href="/products" data-test-id="products-link">
+                Products
+              </Link>
               <Link href="/about">About</Link>
             </nav>
           </div>
