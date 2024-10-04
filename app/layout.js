@@ -15,9 +15,9 @@ const geistMono = localFont({
 
 export const metadata = {
   title: {
-    default: 'Home | chocolATe',
+    default: 'Home | ChocoLoco',
 
-    template: '%s | chocolATe',
+    template: '%s | ChocoLoco',
   },
 
   description: 'Super quality Austrian chocolate',
@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
                 Products
               </Link>
               <Link href="/about">About</Link>
+              <Link href="/cart">Cart</Link>
             </nav>
           </div>
         </header>
