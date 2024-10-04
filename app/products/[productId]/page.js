@@ -3,6 +3,23 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import { getProduct } from '../../../database/products';
 
+export async function generateMetadata(props) {
+  const productId = Number((await props.params).productId);
+  const product = getProduct(productId);
+
+  if (!product) {
+    return {
+      title: 'Product Not Found',
+      description: 'The product you are looking for does not exist.',
+    };
+  }
+
+  return {
+    title: product.name,
+    description: `Details about ${product.name}`,
+  };
+}
+
 export default async function SingleProductPage(props) {
   const product = getProduct(Number((await props.params).productId));
 
