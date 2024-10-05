@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import { getProduct } from '../../../database/products';
 
+// Each product page has a relevant title with the product name
 export async function generateMetadata(props) {
   const productId = Number((await props.params).productId);
   const product = getProduct(productId);
