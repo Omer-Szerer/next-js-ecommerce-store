@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { getProduct } from '../../../database/products';
+import { getCookie } from '../../util/cookies';
+import { parseJson } from '../../util/json';
 import ProductQuantityForm from './ProductQuantityForm';
 
 // Each product page has a relevant title with the product name
@@ -27,9 +29,21 @@ export async function generateMetadata(props) {
 export default async function SingleProductPage(props) {
   const product = getProduct(Number((await props.params).productId));
 
+  const productQuantitiesCookie = await getCookie('productsQuantities');
+
+  let productQuantities = parseJson(productQuantitiesCookie) || [];
+
   if (!product) {
     return notFound();
   }
+
+  if (!Array.isArray(productQuantities)) {
+    productQuantities = [];
+  }
+
+  const productQuantityToDisplay = productQuantities.find((productQuantity) => {
+    return productQuantity.id === product.id;
+  });
 
   return (
     <>
@@ -54,7 +68,8 @@ export default async function SingleProductPage(props) {
         width={200}
         height={200}
       />
-      <ProductQuantityForm />
+      <div>{productQuantityToDisplay?.quantity}</div>
+      <ProductQuantityForm productId={product.id} />
     </>
   );
 }

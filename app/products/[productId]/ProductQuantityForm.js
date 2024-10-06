@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import createOrUpdateCookie from './actions';
 
-export default function ProductQuantityForm({ productId }) {
+export default function ProductQuantityForm(props) {
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -13,13 +13,12 @@ export default function ProductQuantityForm({ productId }) {
           type="number"
           min={1}
           value={quantity}
-          name={`quantity-product-${productId}`}
           onChange={(event) => setQuantity(Number(event.currentTarget.value))}
           data-test-id="product-quantity"
         />
         <button
           data-test-id="product-add-to-cart"
-          formAction={() => createOrUpdateCookie(productId, quantity)}
+          formAction={() => createOrUpdateCookie(props.productId, quantity)}
         >
           Add to cart
         </button>
