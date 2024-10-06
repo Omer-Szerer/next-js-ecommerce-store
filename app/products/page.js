@@ -1,7 +1,10 @@
+// -- Products Page -- //
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '../../database/products';
-import AddToCartButton from '../AddToCartButton';
+
+// import AddToCartButton from '../AddToCartButton';
 
 export const metadata = {
   title: 'Products',
@@ -15,7 +18,7 @@ export default function ProductsPage() {
       {products.map((product) => {
         return (
           <div key={`products-${product.id}`}>
-            <AddToCartButton />
+            {/* <AddToCartButton /> */}
             <Link
               href={`/products/${product.id}`}
               data-test-id={product - `${product.id}`}

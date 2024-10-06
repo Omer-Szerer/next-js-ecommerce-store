@@ -1,19 +1,9 @@
 'use server';
 import { cookies } from 'next/headers';
-import sjson from 'secure-json-parse'; // Safe JSON parsing library
-
-// Secure json parser
-export function parseJson(json) {
-  if (!json) return undefined;
-  try {
-    return sjson(json);
-  } catch {
-    return undefined;
-  }
-}
+import { parseJson } from './json';
 
 // Get cookie value
-export default async function getCookie(name) {
+export async function getCookie(name) {
   const cookie = (await cookies()).get(name);
 
   if (!cookie) return undefined;

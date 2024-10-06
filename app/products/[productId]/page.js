@@ -1,7 +1,10 @@
+// -- Individual Product Page -- //
+
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { getProduct } from '../../../database/products';
+import ProductQuantityForm from './ProductQuantityForm';
 
 // Each product page has a relevant title with the product name
 export async function generateMetadata(props) {
@@ -51,6 +54,7 @@ export default async function SingleProductPage(props) {
         width={200}
         height={200}
       />
+      <ProductQuantityForm />
     </>
   );
 }
