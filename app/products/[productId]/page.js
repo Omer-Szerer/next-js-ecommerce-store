@@ -1,10 +1,10 @@
 // -- Individual Product Page -- //
 
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { getProduct } from '../../../database/products';
-import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
 import ProductQuantityForm from './ProductQuantityForm';
 
@@ -29,9 +29,9 @@ export async function generateMetadata(props) {
 export default async function SingleProductPage(props) {
   const product = getProduct(Number((await props.params).productId));
 
-  const productQuantitiesCookie = await getCookie('productsQuantities');
+  const productQuantitiesCookie = (await cookies()).get('productsQuantities');
 
-  let productQuantities = parseJson(productQuantitiesCookie) || [];
+  let productQuantities = parseJson(productQuantitiesCookie.value) || [];
 
   if (!product) {
     return notFound();

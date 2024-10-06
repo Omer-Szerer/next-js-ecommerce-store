@@ -1,8 +1,10 @@
 // -- Products Page -- //
 
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '../../database/products';
+import { parseJson } from '../util/json';
 
 // import AddToCartButton from '../AddToCartButton';
 
@@ -11,7 +13,14 @@ export const metadata = {
   description: 'Super quality Austrian chocolate',
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const productQuantitiesCookie = (await cookies()).get('productsQuantities');
+
+  let productQuantities = parseJson(productQuantitiesCookie) || [];
+
+  if (!Array.isArray(productQuantities)) {
+    productQuantities = [];
+  }
   return (
     <div>
       <h1>Our Products</h1>
