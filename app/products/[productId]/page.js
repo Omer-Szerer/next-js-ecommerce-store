@@ -29,7 +29,7 @@ export async function generateMetadata(props) {
 export default async function SingleProductPage(props) {
   const product = getProduct(Number((await props.params).productId));
 
-  const productQuantitiesCookie = (await cookies()).get('productsQuantities');
+  const productQuantitiesCookie = (await cookies()).get('cart');
 
   let productQuantities = parseJson(productQuantitiesCookie.value) || [];
 

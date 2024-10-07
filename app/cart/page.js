@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function CartPage() {
-  const productQuantitiesCookie = (await cookies()).get('productsQuantities');
+  const productQuantitiesCookie = (await cookies()).get('cart');
 
   let productQuantities = parseJson(productQuantitiesCookie.value) || [];
 
@@ -27,6 +27,11 @@ export default async function CartPage() {
         const productQuantity = productQuantities.find(
           (productObject) => product.id === productObject.id,
         );
+
+        // Only render products that have a quantity greater than 0
+        if (!productQuantity || productQuantity.quantity === 0) {
+          return null; // Don't render the product if quantity is 0 or undefined
+        }
 
         return (
           <div key={`products-${product.id}`}>
