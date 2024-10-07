@@ -16,7 +16,7 @@ export const metadata = {
 export default async function ProductsPage() {
   const productQuantitiesCookie = (await cookies()).get('productsQuantities');
 
-  let productQuantities = parseJson(productQuantitiesCookie) || [];
+  let productQuantities = parseJson(productQuantitiesCookie.value) || [];
 
   if (!Array.isArray(productQuantities)) {
     productQuantities = [];

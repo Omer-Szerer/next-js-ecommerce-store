@@ -68,7 +68,9 @@ export default async function SingleProductPage(props) {
         width={200}
         height={200}
       />
-      <div>{productQuantityToDisplay?.quantity}</div>
+      <div data-test-id="product-quantity">
+        Total: {productQuantityToDisplay?.quantity}
+      </div>
       <ProductQuantityForm productId={product.id} />
     </>
   );

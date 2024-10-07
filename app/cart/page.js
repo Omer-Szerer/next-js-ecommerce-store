@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { products } from '../../database/products';
 import { parseJson } from '../util/json';
+import { RemoveButton } from './RemoveButton.js';
 
 export const metadata = {
   title: 'Shopping Cart',
@@ -18,6 +19,7 @@ export default async function CartPage() {
   if (!Array.isArray(productQuantities)) {
     productQuantities = [];
   }
+
   return (
     <>
       <h1>Your shopping cart:</h1>
@@ -37,6 +39,7 @@ export default async function CartPage() {
               height={50}
             />
             <h4> {productQuantity?.quantity}</h4>
+            <RemoveButton productId={product.id} />
           </div>
         );
       })}
