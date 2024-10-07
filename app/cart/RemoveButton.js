@@ -2,10 +2,11 @@
 
 import removeProductFromCookie from './actions';
 
-export function RemoveButton({ productId }) {
+export default function RemoveButton({ productId }) {
+  console.log(RemoveButton);
   return (
     <button
-      onClick={() => removeProductFromCookie(productId)}
+      formAction={() => removeProductFromCookie(productId)}
       data-test-id={`cart-product-remove-${productId}`}
     >
       Remove

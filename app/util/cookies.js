@@ -1,9 +1,10 @@
 'use server';
+
 import { cookies } from 'next/headers';
 import { parseJson } from './json';
 
 // Get cookie value
-export async function getCookie(name) {
+export async function getCookieValue(name) {
   const cookie = (await cookies()).get(name);
 
   if (!cookie) return undefined;

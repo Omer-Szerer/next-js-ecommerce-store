@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { products } from '../../database/products';
 import { parseJson } from '../util/json';
-import { RemoveButton } from './RemoveButton.js';
+import RemoveButton from './RemoveButton.js';
 
 export const metadata = {
   title: 'Shopping Cart',
