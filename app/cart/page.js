@@ -2,8 +2,10 @@
 
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import { products } from '../../database/products';
 import { parseJson } from '../util/json';
+import CheckoutButton from './CheckoutButton';
 import RemoveButton from './RemoveButton.js';
 
 export const metadata = {
@@ -39,7 +41,7 @@ export default async function CartPage() {
     <>
       <h1>Your shopping cart:</h1>
       <div data-test-id="cart-total">{`Total: ${roundedTotal}`}</div>
-      <button data-test-id="cart-checkout">Checkout</button>
+      <CheckoutButton />
       {products.map((product) => {
         const productQuantity = productQuantities.find(
           (productObject) => product.id === productObject.id,
