@@ -3,7 +3,6 @@
 import removeProductFromCookie from './actions';
 
 export default function RemoveButton({ productId }) {
-  console.log(RemoveButton);
   return (
     <form>
       <button

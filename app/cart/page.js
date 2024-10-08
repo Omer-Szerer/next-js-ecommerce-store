@@ -2,12 +2,12 @@
 
 import { cookies } from 'next/headers';
 import Image from 'next/image';
-import { products } from '../../database/products';
+import { getProduct, products } from '../../database/products';
 import { parseJson } from '../util/json';
 import RemoveButton from './RemoveButton.js';
 
 export const metadata = {
-  title: 'Shopping Cart',
+  title: 'My Cart',
   description: 'Super quality Austrian chocolate',
 };
 
@@ -20,9 +20,22 @@ export default async function CartPage() {
     productQuantities = [];
   }
 
+  // Cart total calculation
+  let total = 0;
+  for (const product of products) {
+    const productQuantity = productQuantities.find(
+      (productObject) => product.id === productObject.id,
+    );
+    if (productQuantity && productQuantity.quantity > 0) {
+      // Get the product info and multiply by quantity
+      total += product.price * productQuantity.quantity;
+    }
+  }
+
   return (
     <>
       <h1>Your shopping cart:</h1>
+      <div data-test-id="cart-total">{`Total: ${total}`}</div>
       {products.map((product) => {
         const productQuantity = productQuantities.find(
           (productObject) => product.id === productObject.id,
