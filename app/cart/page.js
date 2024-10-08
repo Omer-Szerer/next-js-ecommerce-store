@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import Image from 'next/image';
-import { getProduct, products } from '../../database/products';
+import { products } from '../../database/products';
 import { parseJson } from '../util/json';
 import RemoveButton from './RemoveButton.js';
 
@@ -32,10 +32,14 @@ export default async function CartPage() {
     }
   }
 
+  // Round total to 2 decimal places
+  const roundedTotal = total.toFixed(2);
+
   return (
     <>
       <h1>Your shopping cart:</h1>
-      <div data-test-id="cart-total">{`Total: ${total}`}</div>
+      <div data-test-id="cart-total">{`Total: ${roundedTotal}`}</div>
+      <button data-test-id="cart-checkout">Checkout</button>
       {products.map((product) => {
         const productQuantity = productQuantities.find(
           (productObject) => product.id === productObject.id,
@@ -45,9 +49,14 @@ export default async function CartPage() {
         if (!productQuantity || productQuantity.quantity === 0) {
           return null; // Don't render the product if quantity is 0 or undefined
         }
+        // Calculate the subtotal for the current product
+        const subtotal = (product.price * productQuantity.quantity).toFixed(2);
 
         return (
-          <div key={`products-${product.id}`}>
+          <div
+            key={`products-${product.id}`}
+            data-test-id={`cart-product-${product.id}`}
+          >
             <h4>{product.name}</h4>
             <Image
               src={`/product-images/${product.name.replace(/ /g, '-')}.jpg`}
@@ -56,7 +65,10 @@ export default async function CartPage() {
               width={50}
               height={50}
             />
-            <h4> {productQuantity?.quantity}</h4>
+            <div data-test-id={`cart-product-quantity-${product.id}`}>
+              <p> Product quantity: {productQuantity?.quantity}</p>
+            </div>
+            <p>Subtotal: {subtotal}</p>
             <RemoveButton productId={product.id} />
           </div>
         );
