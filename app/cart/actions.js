@@ -2,8 +2,6 @@
 
 import { getCookieValue, setCookie } from '../util/cookies.js';
 
-// export const cartCookieName = 'cart';
-
 export default async function removeProductFromCookie(productId) {
   const cartCookieName = 'cart';
   // Get product information saved in cart cookie or set to base datatype in case cookie does not exist

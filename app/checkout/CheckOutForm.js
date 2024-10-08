@@ -140,9 +140,9 @@ export default function CheckOutForm() {
                   required
                   type="tel"
                   pattern="\d*"
-                  minLength="5"
-                  maxLength="5"
-                  placeholder="MM/YY"
+                  minLength="4"
+                  maxLength="4"
+                  placeholder="MMYY"
                   value={expirationDate}
                   onChange={(event) =>
                     setExpirationDate(event.currentTarget.value)

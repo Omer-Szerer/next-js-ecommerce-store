@@ -1,6 +1,6 @@
 import './globals.scss';
 import localFont from 'next/font/local';
-import Link from 'next/link';
+import Nav from './components/navigation/nav';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -28,17 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header>
-          <div>
-            <nav>
-              <Link href="/">Home</Link>
-              <Link href="/products" data-test-id="products-link">
-                Products
-              </Link>
-              <Link href="/cart" data-test-id="cart-link">
-                Cart
-              </Link>
-            </nav>
-          </div>
+          <Nav />
         </header>
         <main>{children}</main>
         <footer>All images are credited to Zotter Schokolade.</footer>
