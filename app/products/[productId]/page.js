@@ -31,7 +31,9 @@ export default async function SingleProductPage(props) {
 
   const productQuantitiesCookie = (await cookies()).get('cart');
 
-  let productQuantities = parseJson(productQuantitiesCookie.value) || [];
+  let productQuantities = productQuantitiesCookie
+    ? parseJson(productQuantitiesCookie.value) || []
+    : [];
 
   if (!product) {
     return notFound();

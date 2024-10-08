@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import removeProductFromCookie from '../cart/actions';
 import { deleteCookie } from '../util/cookies';
 
 export default function CheckOutForm() {
@@ -141,9 +140,9 @@ export default function CheckOutForm() {
                   required
                   type="tel"
                   pattern="\d*"
-                  minLength="4"
-                  maxLength="4"
-                  placeholder="mmyy"
+                  minLength="5"
+                  maxLength="5"
+                  placeholder="MM/YY"
                   value={expirationDate}
                   onChange={(event) =>
                     setExpirationDate(event.currentTarget.value)
@@ -176,8 +175,8 @@ export default function CheckOutForm() {
       </fieldset>
       <button
         formAction={async () => {
-          await deleteCookie(removeProductFromCookie);
-          router.push('/order-confirmed');
+          await deleteCookie('cart');
+          router.push('/thank-you');
         }}
         data-test-id="checkout-confirm-order"
       >
