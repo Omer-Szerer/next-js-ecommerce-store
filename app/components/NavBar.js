@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { cartCookieName } from '../../util/cartCookie';
-import { getCookieValue } from '../../util/cookies';
+import { cartCookieName } from '../util/cartCookie';
+import { getCookieValue } from '../util/cookies';
 
 export default async function Nav() {
   let products = await getCookieValue(cartCookieName);

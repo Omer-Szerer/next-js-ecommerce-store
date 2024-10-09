@@ -18,6 +18,24 @@ export default function CheckOutForm() {
 
   const router = useRouter();
 
+  // Function to format the card number with dashes
+  const formatCardNumber = (value) => {
+    // Remove all non-digit characters
+    const numericValue = value.replace(/\D/g, '');
+
+    // Format as XXXX-XXXX-XXXX-XXXX
+    const formattedValue = numericValue
+      .replace(/(\d{4})(?=\d)/g, '$1-') // Add a dash every 4 digits
+      .slice(0, 19); // Limit to 19 characters (16 digits + 3 dashes)
+
+    return formattedValue;
+  };
+
+  const handleCardNumberChange = (event) => {
+    const formattedValue = formatCardNumber(event.target.value);
+    setCardNumber(formattedValue);
+  };
+
   return (
     <form>
       <fieldset>
@@ -123,11 +141,11 @@ export default function CheckOutForm() {
                   name="cardNumber"
                   required
                   type="tel"
-                  pattern="\d*"
+                  pattern="\d{4}-\d{4}-\d{4}-\d{4}"
                   maxLength="19"
-                  placeholder="xxxx xxxx xxxx xxxx"
+                  placeholder="xxxx-xxxx-xxxx-xxxx"
                   value={cardNumber}
-                  onChange={(event) => setCardNumber(event.currentTarget.value)}
+                  onChange={handleCardNumberChange}
                   data-test-id="checkout-credit-card"
                 />
               </td>
@@ -139,14 +157,23 @@ export default function CheckOutForm() {
                   name="expirationDate"
                   required
                   type="tel"
-                  pattern="\d*"
-                  minLength="4"
-                  maxLength="4"
-                  placeholder="MMYY"
+                  pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                  maxLength="5"
+                  placeholder="mm/yy"
                   value={expirationDate}
-                  onChange={(event) =>
-                    setExpirationDate(event.currentTarget.value)
-                  }
+                  onChange={(event) => {
+                    // Get the input value
+                    const inputValue = event.currentTarget.value;
+
+                    // Format the input value
+                    const formattedValue = inputValue
+                      .replace(/\D/g, '') // Remove all non-digit characters
+                      .replace(/(\d{2})(?=\d)/g, '$1/') // Add / after the first two digits
+                      .slice(0, 5); // Limit to 5 characters (MM/YY)
+
+                    // Update the state with the formatted value
+                    setExpirationDate(formattedValue);
+                  }}
                   data-test-id="checkout-expiration-date"
                 />
               </td>
