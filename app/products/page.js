@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '../../database/products';
+import { products } from '../../database/fakeProductsDatabase';
 import { parseJson } from '../util/json';
 
 // import AddToCartButton from '../AddToCartButton';

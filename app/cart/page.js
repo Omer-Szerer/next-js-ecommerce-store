@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import Image from 'next/image';
-import { products } from '../../database/products';
+import { products } from '../../database/fakeProductsDatabase';
 import { parseJson } from '../util/json';
 import CheckoutButton from './CheckoutButton';
 import RemoveButton from './RemoveButton.js';

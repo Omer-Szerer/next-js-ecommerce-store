@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import { getProduct } from '../../../database/products';
+import { getProduct } from '../../../database/fakeProductsDatabase';
 import { parseJson } from '../../util/json';
 import ProductQuantityForm from './ProductQuantityForm';
 
