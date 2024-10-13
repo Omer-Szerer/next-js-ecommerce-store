@@ -72,6 +72,7 @@ export default async function SingleProductPage(props) {
         width={200}
         height={200}
       />
+      <div className="description">{product.description}</div>
       <div data-test-id="product-quantity">
         Total: {productQuantityToDisplay?.quantity}
       </div>
