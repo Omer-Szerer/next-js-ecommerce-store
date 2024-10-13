@@ -4,14 +4,14 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import { getProduct } from '../../../database/fakeProductsDatabase';
+import { getProductInsecure } from '../../../database/products';
 import { parseJson } from '../../util/json';
 import ProductQuantityForm from './ProductQuantityForm';
 
 // Each product page has a relevant title with the product name
 export async function generateMetadata(props) {
   const productId = Number((await props.params).productId);
-  const product = getProduct(productId);
+  const product = await getProductInsecure(productId); // Fix: added 'await'
 
   if (!product) {
     return {
@@ -27,7 +27,9 @@ export async function generateMetadata(props) {
 }
 
 export default async function SingleProductPage(props) {
-  const product = getProduct(Number((await props.params).productId));
+  const product = await getProductInsecure(
+    Number((await props.params).productId),
+  ); // Fix: added 'await'
 
   const productQuantitiesCookie = (await cookies()).get('cart');
 

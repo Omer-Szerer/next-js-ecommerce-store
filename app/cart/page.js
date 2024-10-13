@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import Image from 'next/image';
-import { products } from '../../database/fakeProductsDatabase';
+import { getProductsInsecure } from '../../database/products';
 import { parseJson } from '../util/json';
 import CheckoutButton from './CheckoutButton';
 import RemoveButton from './RemoveButton.js';
@@ -14,6 +14,7 @@ export const metadata = {
 
 export default async function CartPage() {
   const productQuantitiesCookie = (await cookies()).get('cart');
+  const products = await getProductsInsecure();
 
   let productQuantities = productQuantitiesCookie
     ? parseJson(productQuantitiesCookie.value) || []

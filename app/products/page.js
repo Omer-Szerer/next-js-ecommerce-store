@@ -3,10 +3,8 @@
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '../../database/fakeProductsDatabase';
+import { getProductsInsecure } from '../../database/products';
 import { parseJson } from '../util/json';
-
-// import AddToCartButton from '../AddToCartButton';
 
 export const metadata = {
   title: 'Products',
@@ -14,6 +12,8 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
+  const products = await getProductsInsecure();
+
   const productQuantitiesCookie = (await cookies()).get('cart');
 
   let productQuantities = productQuantitiesCookie
