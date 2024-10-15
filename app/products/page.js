@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProductsInsecure } from '../../database/products';
-import { parseJson } from '../util/json';
+import { parseJson } from '../util/sjson';
 
 export const metadata = {
   title: 'Products',

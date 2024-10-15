@@ -1,6 +1,7 @@
 :root {
   --color-background: #f7f7f7;
   --color-layout: #fcc943;
+  --nav-color-background: #222222;
 }
 
 body {
@@ -19,7 +20,7 @@ a {
 nav {
   width: 100vw;
   height: 4rem;
-  background: var(--color-layout);
+  background: var(--nav-color-background);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -32,6 +33,7 @@ nav {
 
   > div a {
     margin: 0.25rem;
+    color: white;
   }
 }
 

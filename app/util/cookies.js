@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { parseJson } from './json';
+import { parseJson } from './sjson';
 
 // Get cookie value
 export async function getCookieValue(name) {

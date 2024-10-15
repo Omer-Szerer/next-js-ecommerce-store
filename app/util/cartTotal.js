@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { parseJson } from './json';
+import { parseJson } from './sjson';
 
 // Utility function to calculate the total items in the cart
 export async function getCartTotalItems() {

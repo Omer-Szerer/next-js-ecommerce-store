@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { getProductInsecure } from '../../../database/products';
-import { parseJson } from '../../util/json';
+import { parseJson } from '../../util/sjson';
 import ProductQuantityForm from './ProductQuantityForm';
 
 // Each product page has a relevant title with the product name

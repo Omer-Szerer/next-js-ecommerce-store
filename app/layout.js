@@ -1,5 +1,6 @@
 import './globals.scss';
 import localFont from 'next/font/local';
+import Footer from './components/footer';
 import Nav from './components/NavBar';
 
 const geistSans = localFont({
@@ -31,7 +32,9 @@ export default function RootLayout({ children }) {
           <Nav />
         </header>
         <main>{children}</main>
-        <footer>All images are credited to Zotter Schokolade.</footer>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

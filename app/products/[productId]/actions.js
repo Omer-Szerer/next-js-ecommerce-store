@@ -1,6 +1,6 @@
 'use server';
 import { cookies } from 'next/headers';
-import { parseJson } from '../../util/json';
+import { parseJson } from '../../util/sjson';
 
 export default async function createOrUpdateCookie(productId, quantity) {
   // 1. get current cookie

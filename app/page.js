@@ -1,5 +1,7 @@
 // -- Homepage -- //
 
+import Hero from './components/hero';
+
 // import styles from './page.module.scss';
 
 export const metadata = {
@@ -8,5 +10,5 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  return <h1>Welcome to ChocoLoco</h1>;
+  return <Hero />;
 }
