@@ -29,7 +29,6 @@ export default async function ProductsPage() {
   return (
     <div>
       <HeroProducts />
-      {/* <h1 className={styles.title}>Our Products</h1> */}
       <div className={styles.productsContainer}>
         {products.map((product) => (
           <div key={`products-${product.id}`} className={styles.productCard}>

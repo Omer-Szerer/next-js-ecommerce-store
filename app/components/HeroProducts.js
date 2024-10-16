@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import styles from '../styles/hero.module.scss';
+import styles from '../styles/hero-products.module.scss';
 
 export default function HeroProducts() {
   return (

@@ -1,6 +1,6 @@
 // -- Homepage -- //
 
-import Hero from './components/HeroHomepage';
+import HeroHomepage from './components/HeroHomepage';
 
 export const metadata = {
   title: 'Home | ChocoLoco',
@@ -8,5 +8,5 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  return <Hero />;
+  return <HeroHomepage />;
 }
