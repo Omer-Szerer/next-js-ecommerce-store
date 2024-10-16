@@ -1,8 +1,6 @@
 // -- Homepage -- //
 
-import Hero from './components/hero';
-
-// import styles from './page.module.scss';
+import Hero from './components/HeroHomepage';
 
 export const metadata = {
   title: 'Home | ChocoLoco',

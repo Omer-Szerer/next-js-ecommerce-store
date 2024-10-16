@@ -1,4 +1,4 @@
-import './globals.scss';
+import './styles/globals.scss';
 import localFont from 'next/font/local';
 import Footer from './components/footer';
 import Nav from './components/NavBar';
@@ -17,10 +17,8 @@ const geistMono = localFont({
 export const metadata = {
   title: {
     default: 'Home | ChocoLoco',
-
     template: '%s | ChocoLoco',
   },
-
   description: 'Super quality Austrian chocolate',
 };
 
@@ -28,13 +26,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>
-          <Nav />
-        </header>
-        <main>{children}</main>
-        <footer>
-          <Footer />
-        </footer>
+        <div className="pageContainer">
+          {' '}
+          {/* Flex container */}
+          <header>
+            <Nav />
+          </header>
+          <main className="contentContainer">{children}</main>{' '}
+          <footer>
+            <Footer />
+          </footer>
+        </div>
       </body>
     </html>
   );

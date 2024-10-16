@@ -1,0 +1,24 @@
+.heroContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+
+  .heroImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .heroTitle {
+    position: absolute;
+    color: white;
+    font-size: clamp(1.8rem, 5vw, 4rem);
+    text-align: center;
+    padding: 20px 30px;
+    max-width: 90%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+}

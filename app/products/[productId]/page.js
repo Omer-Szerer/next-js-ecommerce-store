@@ -3,7 +3,6 @@
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import React from 'react';
 import { getProductInsecure } from '../../../database/products';
 import { parseJson } from '../../util/sjson';
 import ProductQuantityForm from './ProductQuantityForm';
@@ -11,7 +10,7 @@ import ProductQuantityForm from './ProductQuantityForm';
 // Each product page has a relevant title with the product name
 export async function generateMetadata(props) {
   const productId = Number((await props.params).productId);
-  const product = await getProductInsecure(productId); // Fix: added 'await'
+  const product = await getProductInsecure(productId);
 
   if (!product) {
     return {
@@ -29,7 +28,7 @@ export async function generateMetadata(props) {
 export default async function SingleProductPage(props) {
   const product = await getProductInsecure(
     Number((await props.params).productId),
-  ); // Fix: added 'await'
+  );
 
   const productQuantitiesCookie = (await cookies()).get('cart');
 

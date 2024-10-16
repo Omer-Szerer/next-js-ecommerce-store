@@ -9,12 +9,31 @@ body {
   font-family: -apple-system, 'system-ui', 'Segoe UI', 'Noto Sans', Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   background: var(--color-background);
-  // Avoid fixed footer obscuring content
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contentContainer {
+  flex-grow: 1;
   padding-bottom: 50px;
+}
+
+footer {
+  background-color: #eeeeee;
+  padding: 1rem;
+  text-align: center;
 }
 
 a {
   color: black;
+  text-decoration: none;
 }
 
 nav {

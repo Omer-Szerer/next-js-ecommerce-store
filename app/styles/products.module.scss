@@ -1,0 +1,66 @@
+.productsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  margin: 90px;
+}
+
+.productCard {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  width: 250px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    border-radius: 8px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 16px 0 8px;
+    min-height: 48px; // adjust price height
+  }
+
+  .productPrice {
+    color: #888;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); // Separation line below the name and price
+    padding-bottom: 75px; // Adds some space between the name/price and the separator
+  }
+
+  .addToCartButton {
+    background-color: #fcc943;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+
+    &:active {
+      background-color: #fcc943;
+    }
+  }
+}
