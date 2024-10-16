@@ -12,7 +12,11 @@ export default function HeroProducts() {
         width={1920}
         height={600}
       />
-      <h1 className={styles.heroTitle}>The New Chocolate Collection!</h1>
+      <h1 className={styles.heroTitle}>
+        The New Chocolate
+        <br />
+        Collection!
+      </h1>
     </div>
   );
 }

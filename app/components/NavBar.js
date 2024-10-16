@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import styles from '../styles/navbar.module.scss';
 import { cartCookieName } from '../util/cartCookie';
 import { getCookieValue } from '../util/cookies';
 
@@ -16,17 +18,25 @@ export default async function Nav() {
       0,
     );
   }
+
   return (
     <nav>
       <div>
-        <nav>
+        <nav className={styles.navBar}>
           <Link href="/">Home</Link>
           <Link href="/products" data-test-id="products-link">
             Products
           </Link>
           <Link href="/cart" data-test-id="cart-link">
-            Cart
-            <div data-test-id="cart-count">{`${productsInCart}`}</div>
+            <div className={styles.cartIconContainer}>
+              Cart
+              <Image src="/cart-icon.svg" alt="Cart" width={30} height={30} />
+              {productsInCart > 0 && (
+                <div className={styles.cartCount} data-test-id="cart-count">
+                  {productsInCart}
+                </div>
+              )}
+            </div>
           </Link>
         </nav>
       </div>

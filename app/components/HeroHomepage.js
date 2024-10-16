@@ -13,7 +13,11 @@ export default function HeroHomepage() {
           width={1920}
           height={600}
         />
-        <h1 className={styles.h1Title}>Welcome to ChocoLoco</h1>
+        <h1 className={styles.heroTitle}>
+          Welcome to
+          <br />
+          ChocoLoco
+        </h1>
       </div>
       <div className={styles.pageContent}>
         <h2 className={styles.h2Title}>
