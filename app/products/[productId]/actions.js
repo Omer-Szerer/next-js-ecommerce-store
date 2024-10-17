@@ -12,19 +12,22 @@ export default async function createOrUpdateCookie(productId, quantity) {
       []
     : parseJson(productsQuantitiesCookie.value);
 
-  // 3. edit the cookie value
+  // 3. Check if the product already exists in the cookie
   const productToUpdate = productsQuantities.find((productQuantity) => {
     return productQuantity.id === productId;
   });
 
-  // Case B: cookie set, id doesn't exist
-  productsQuantities.push({ id: productId, quantity: quantity });
   if (!productToUpdate) {
+    // Case B: Product doesn't exist, add it to the array
+    productsQuantities.push({ id: productId, quantity: quantity });
   } else {
-    // Case C: cookie set, id exists already
+    // Case C: Product exists, update its quantity
     productToUpdate.quantity += quantity;
   }
 
-  // 4. we override the cookie
-  (await cookies()).set('cart', JSON.stringify(productsQuantities));
+  // 4. Override the cookie
+  (await cookies()).set('cart', JSON.stringify(productsQuantities), {
+    httpOnly: true,
+    secure: true,
+  });
 }

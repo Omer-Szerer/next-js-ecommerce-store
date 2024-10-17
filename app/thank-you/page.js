@@ -1,7 +1,14 @@
 // -- Thank You Page -- //
 
+import styles from '../styles/thank-you.module.scss';
+
 export default function ThankYouPage() {
-  return <p> Thank you for your order</p>;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Thank You for Your Order!</h1>
+      <p className={styles.message}>We appreciate your business!</p>
+    </div>
+  );
 }
 
 export const metadata = {
