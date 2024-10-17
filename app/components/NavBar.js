@@ -31,11 +31,10 @@ export default async function Nav() {
             <div className={styles.cartIconContainer}>
               Cart
               <Image src="/cart-icon.svg" alt="Cart" width={30} height={30} />
-              {productsInCart > 0 && (
-                <div className={styles.cartCount} data-test-id="cart-count">
-                  {productsInCart}
-                </div>
-              )}
+              {/* Always display the cart count, even if it is 0 */}
+              <div className={styles.cartCount} data-test-id="cart-count">
+                {productsInCart}
+              </div>
             </div>
           </Link>
         </nav>
