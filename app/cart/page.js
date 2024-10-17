@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getProductsInsecure } from '../../database/products';
 import styles from '../styles/cart-page.module.scss';
 import { parseJson } from '../util/sjson';
@@ -70,19 +71,20 @@ export default async function CartPage() {
           <div
             key={`products-${product.id}`}
             data-test-id={`cart-product-${product.id}`}
-            className={styles.productCard} // Add a class for styling
+            className={styles.productCard}
           >
-            <Image
-              src={`/product-images/${product.name.replace(/ /g, '-')}.jpg`}
-              alt={product.name}
-              data-test-id="product-image"
-              width={100} // Adjust size as needed
-              height={100} // Adjust size as needed
-              className={styles.productImage} // Add a class for styling
-            />
+            <Link href={`/products/${product.id}`}>
+              <Image
+                src={`/product-images/${product.name.replace(/ /g, '-')}.jpg`}
+                alt={product.name}
+                data-test-id="product-image"
+                width={100}
+                height={100}
+                className={styles.productImage}
+              />
+            </Link>
             <div className={styles.productDetails}>
               {' '}
-              {/* Ensure this div wraps the details */}
               <h4 className={styles.productName}>{product.name}</h4>
               <div className={styles.productQuantity}>
                 Quantity: {productQuantity.quantity}
