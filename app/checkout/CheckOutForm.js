@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import styles from '../styles/check-out.module.scss';
 import { deleteCookie } from '../util/cookies';
 
 export default function CheckOutForm() {
@@ -37,7 +38,7 @@ export default function CheckOutForm() {
   };
 
   return (
-    <form>
+    <form className={styles.checkoutForm}>
       <fieldset>
         <legend>Shipping details</legend>
         <table>
