@@ -3,6 +3,7 @@
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import { getProductsInsecure } from '../../database/products';
+import styles from '../styles/cart-page.module.scss';
 import { parseJson } from '../util/sjson';
 import CheckoutButton from './CheckoutButton';
 import RemoveButton from './RemoveButton.js';
@@ -26,6 +27,7 @@ export default async function CartPage() {
 
   // Cart total calculation
   let total = 0;
+  let totalQuantity = 0; // Variable to keep track of total quantity
   for (const product of products) {
     const productQuantity = productQuantities.find(
       (productObject) => product.id === productObject.id,
@@ -33,6 +35,7 @@ export default async function CartPage() {
     if (productQuantity && productQuantity.quantity > 0) {
       // Get the product info and multiply by quantity
       total += product.price * productQuantity.quantity;
+      totalQuantity += productQuantity.quantity; // Add to total quantity
     }
   }
 
@@ -40,10 +43,17 @@ export default async function CartPage() {
   const roundedTotal = total.toFixed(2);
 
   return (
-    <>
+    <div className={styles.cartContainer}>
+      {' '}
+      {/* Use the new container style */}
       <h1>Your shopping cart:</h1>
-      <div data-test-id="cart-total">{`Total: ${roundedTotal}`}</div>
-      <CheckoutButton />
+      {/* Total Card - Now appears first */}
+      <div className={styles.totalCard}>
+        <div>
+          Total ({totalQuantity} products) for {roundedTotal} €
+        </div>
+        <CheckoutButton className={styles.checkoutButton} />
+      </div>
       {products.map((product) => {
         const productQuantity = productQuantities.find(
           (productObject) => product.id === productObject.id,
@@ -60,23 +70,34 @@ export default async function CartPage() {
           <div
             key={`products-${product.id}`}
             data-test-id={`cart-product-${product.id}`}
+            className={styles.productCard} // Add a class for styling
           >
-            <h4>{product.name}</h4>
             <Image
               src={`/product-images/${product.name.replace(/ /g, '-')}.jpg`}
               alt={product.name}
               data-test-id="product-image"
-              width={50}
-              height={50}
+              width={100} // Adjust size as needed
+              height={100} // Adjust size as needed
+              className={styles.productImage} // Add a class for styling
             />
-            <div data-test-id={`cart-product-quantity-${product.id}`}>
-              <p> Product quantity: {productQuantity?.quantity}</p>
+            <div className={styles.productDetails}>
+              {' '}
+              {/* Ensure this div wraps the details */}
+              <h4 className={styles.productName}>{product.name}</h4>
+              <div className={styles.productQuantity}>
+                Quantity: {productQuantity.quantity}
+              </div>
+              <div className={styles.productSubtotal}>
+                Subtotal: {subtotal} €
+              </div>
             </div>
-            <p>Subtotal: {subtotal}</p>
-            <RemoveButton productId={product.id} />
+            <RemoveButton
+              productId={product.id}
+              className={styles.removeButton}
+            />
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
