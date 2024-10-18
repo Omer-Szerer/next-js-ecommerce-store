@@ -1,3 +1,8 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .navBar {
   display: flex;
   flex-direction: row;
@@ -5,6 +10,10 @@
   align-items: center;
   font-size: 1.5rem;
   font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--nav-color-background);
 }
 
 .navBar a {

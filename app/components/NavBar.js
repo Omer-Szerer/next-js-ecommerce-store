@@ -21,7 +21,7 @@ export default async function Nav() {
 
   return (
     <nav>
-      <div>
+      <div className="pageContainer">
         <nav className={styles.navBar}>
           <Link href="/">Home</Link>
           <Link href="/products" data-test-id="products-link">
@@ -31,7 +31,6 @@ export default async function Nav() {
             <div className={styles.cartIconContainer}>
               Cart
               <Image src="/cart-icon.svg" alt="Cart" width={30} height={30} />
-              {/* Always display the cart count, even if it is 0 */}
               <div className={styles.cartCount} data-test-id="cart-count">
                 {productsInCart}
               </div>

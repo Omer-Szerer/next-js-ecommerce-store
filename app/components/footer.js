@@ -5,10 +5,10 @@ export default function Footer() {
     <footer className="fixed_footer">
       <div className="content">
         <p>
+          All images are credited to Zotter Schokolade.
+          <br /> <br />
           This website is a full-stack example project of an e-commerce
           platform.
-          <br />
-          <br /> All images are credited to Zotter Schokolade.
         </p>
       </div>
     </footer>

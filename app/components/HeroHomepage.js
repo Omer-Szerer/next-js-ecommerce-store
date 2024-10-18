@@ -21,36 +21,36 @@ export default function HeroHomepage() {
       </div>
       <div className={styles.pageContent}>
         <h2 className={styles.h2Title}>
-          ChocoLoco stands for variety, quality, innovation, creativity and
-          sustainability. <br />
           100% ORGANIC + FAIR TRADE + BEAN-TO-BAR
         </h2>
         <h3 className={styles.h3Title}>
           VARIETY AND CREATIVITY • 500 FLAVOURS
         </h3>
         <p className={styles.description}>
-          Josef Zotter has re-invented chocolate: Hand-scooped Chocolates are
-          basically giant bonbons. Featuring wonderful flavour combinations and
-          distinctive, artistic sleeve designs, Hand-scooped Chocolates have
-          become iconic. They’re filled chocolate miracles consisting of several
-          layers, brushed onto long lanes – one on top of the other – by hand.
-          Zotter’s flavour combinations are classic like »Marzipan and Almonds«
-          and »Amarena cherry« and eccentric like »Olive & Lemon« and »Hemp
-          Bonbon«, but all of them offer a unique flavour experience.
-          Hand-scooped Chocolates are available in more than 100 flavours, all
-          invented by Josef and his daughter Julia Zotter. <br />
+          This project is a full-stack Next.js app created for a web development
+          bootcamp. <br />
+          Just a heads up, it’s not a real application; it’s more of a hands-on
+          learning experience designed to mimic building a production-ready web
+          app.
           <br />
-          From the very beginning, our good friend, artist Andreas H. Gratze has
-          created many individual sleeve designs, which turn each chocolate into
-          a unique work of art as well as the perfect gift.
+          <br /> In this project, we’re using Next.js to create server-side
+          rendered and static web pages, which helps with fast loading times and
+          good SEO. The backend runs on a PostgreSQL database, giving us a solid
+          way to manage our data. We’re also using cookies to handle user
+          sessions, preferences, and shopping cart features, making everything
+          feel more seamless.
           <br />
-          <br /> We produce a total of around 500 different flavours: our range
-          includes the iconic Hand-scooped Chocolates, pure single origin
-          chocolates, drinking chocolates, pralines, couvertures and handmade
-          organic bonbons. At our Mixing Bar, customers may create their own
-          individual chocolates from various ingredients, shapes and fillings by
-          picking their favourite flavours. All our chocolates are organic, fair
-          and bean-to- bar.
+          <br /> TypeScript is included to help catch errors early and keep the
+          code clean and easy to maintain. We’ve set up end-to-end tests to make
+          sure all the features work well together and that users can navigate
+          smoothly. Plus, we’ve implemented some SEO tricks to help the app get
+          found by search engines. Finally, we’re following deployment practices
+          that simulate what it would be like to launch the app for real, so
+          it’s ready to be hosted on platforms like fly.io or others.
+          <br />
+          <br /> Overall, this project is a great way to see the whole web
+          development process, from designing the frontend to connecting the
+          backend, testing everything out, and getting it ready for deployment.
         </p>
       </div>
       <div className={styles.homepageImages}>
